@@ -10,27 +10,29 @@ function LocationView() {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`/api/locations/${locationId}`);
-      console.log("Response: ", response);
       const responseData = await response.json();
-      console.log('RESPONSE DATA: ', responseData)
       setLocation(responseData);
     }
     fetchData();
   }, [locationId]);
 
-//   const locationComponents = location.map((location) => {
-//     return (
-//       <li key={location.id}>
-//         {location.street_address}
-//       </li>
-//     );
-//   });
+  const comments = location.comments;
+
+  console.log('COMMENTS: ', comments)
 
   return (
     <>
-    {location && location.comments.map((comment) => (
-        <p>{comment.comment}</p>
-    )) }
+        <h1>Title: {location.title !== '' ? location.title : "Untitled"}</h1>
+        <h1>Artist: {location.artist !== '' ? location.title : "Unknown"}</h1>
+        <h1>Address: </h1>
+          <ul>
+            <li>{location.street_address}</li>
+            <li>{location.city}</li>
+            <li>{location.state}</li>
+            <li>{location.zip_code}</li>
+          </ul>
+        <h3>Description: {location.description}</h3>
+        {location.comments.length && <p>location.comments</p>}
     </>
   );
 }
