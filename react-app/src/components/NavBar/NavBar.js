@@ -33,7 +33,7 @@ const NavBar = ({ setAuthenticated, authenticated }) => {
           <ul>
             <li>
               <ProfileButton setAuthenticated={setAuthenticated} />
-             
+
             </li>
           </ul>
         }

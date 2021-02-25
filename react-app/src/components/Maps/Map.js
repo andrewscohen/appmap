@@ -3,8 +3,9 @@ import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
 
 import Locate from './Locate';
 import Search from './Search';
-import "@reach/combobox/styles.css";
 import mapStyle from "./mapStyle";
+import "@reach/combobox/styles.css";
+import "./Map.css"
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -28,7 +29,7 @@ export default function Gmap() {
     libraries ,
   });
   const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
+  // const [selected, setSelected] = React.useState(null);
 
   const onMapClick = React.useCallback((e) => {
     setMarkers((current) => [
@@ -56,6 +57,7 @@ export default function Gmap() {
 
   return (
     <div>
+      <p className='test'>This is a test</p>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
       <GoogleMap
