@@ -9,8 +9,9 @@ import "./Map.css"
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "70vh",
-  width: "70vw",
+  height: "100vh",
+  width: "100vw",
+  // marginLeft: '10px',
 };
 const options = {
   styles: mapStyle,
@@ -56,10 +57,13 @@ export default function Gmap() {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+    <div className="map-grid-container">
+      <div className="sidebar-container">
       <p className='test'>This is a test</p>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
+      </div>
+      <div></div>
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
