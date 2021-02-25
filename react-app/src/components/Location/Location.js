@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import LocationComment from "./Comment";
+
+
 function LocationList() {
   const [location, setLocation] = useState([]);
 
@@ -23,6 +26,7 @@ function LocationList() {
     <>
       <h1>Location List: </h1>
       <ul>{locationComponents}</ul>
+      <LocationComment />
     </>
   );
 }

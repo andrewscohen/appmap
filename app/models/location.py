@@ -36,5 +36,6 @@ class Location(db.Model):
         "title": self.title,
         "description": self.description,
         "artist": self.artist,
-        "photos": [photo.to_dict() for photo in self.photos]
+        "photos": [photo.to_dict() for photo in self.photos],
+        "comments": [comment.to_dict() for comment in self.comments]
         }

@@ -9,6 +9,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import UserProfile from "./components/UserProfile";
 import Gmap from "./components/Maps/Map.js";
+import LocationList from './components/Location/Location.js';
+import LocationView from './components/Location/LocationView.js';
 import { authenticate } from "./services/auth";
 import { setUser } from "./store/session"
 import "./components/NavBar/Navbar.css"
@@ -59,6 +61,13 @@ function App() {
           <Route path='/map'>
             <Gmap />
           </Route>
+          <Route path="/locations" exact={true}>
+            <LocationList />
+          </Route>
+          <Route path="/locations/:locationId" exact={true}>
+            <LocationView />
+          </Route>
+
         </Switch>
       )}
     </BrowserRouter>
