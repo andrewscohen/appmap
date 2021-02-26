@@ -78,6 +78,7 @@ export const addLocation = (locationFile) => async (dispatch) => {
             result['photos'].push(p_result.url)
             dispatch(newLocation(result))
         }
+ 
     }
    
 

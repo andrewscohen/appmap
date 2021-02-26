@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import * as locationActions from '../../store/locations'
 import { getCoords } from '../../services/maps';
@@ -16,8 +16,10 @@ const LocationForm = () => {
     const [description, setDescription] = useState('')
     const [photo, setPhoto] = useState('')
     const [errors, setErrors] = useState([])
+    
 
     const sessionUser = useSelector((state) => state.session.user) 
+    const newLocation = useSelector((state) => state.locations.location) 
   
     const dispatch = useDispatch()
     const history = useHistory()
@@ -27,7 +29,6 @@ const LocationForm = () => {
         e.preventDefault()
         let newErrors = []
         const address = `${street_address} ${city} ${state} ${zip_code}`
-        console.log('ADDRESS: ', address)
         const {lat, long} = await getCoords(address)
         dispatch(locationActions.addLocation({ 
             user_id: sessionUser.id,
@@ -59,14 +60,14 @@ const LocationForm = () => {
                 setErrors(newErrors);
             }
         });
-    
-        history.push('/map')
+        // history.push(`/locations/${newLocation.id}`)
     }
   
 
 
     return (
     <>
+        {newLocation && <Redirect to={`/locations/${newLocation.id}`} />}
         <h1>Enter a New Location</h1>
         <fieldset>
         {errors.length > 0 &&

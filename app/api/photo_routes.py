@@ -40,5 +40,6 @@ def add_photo():
         db.session.commit()
 
         return photo.to_dict()
+        
     else:
         return redirect("/locations/add/new")
