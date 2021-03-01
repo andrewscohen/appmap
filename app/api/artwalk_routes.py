@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import ArtWalk
+from app.models import ArtWalk, db
 import json
 
 artwalk_routes = Blueprint('artwalks', __name__)
@@ -20,4 +20,7 @@ def artwalk(id):
 def delete_artwalk(id):
     artwalk = ArtWalk.query.get(id)
 
-    print(artwalk)
+    db.session.delete(artwalk)
+    db.session.commit()
+
+    return "it worked"
