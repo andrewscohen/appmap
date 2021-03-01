@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Directions from "../RouteMap";
 import mapStyle from "../Maps/mapStyle";
@@ -7,6 +7,7 @@ import "./ArtwalkContainer.css";
 
 export default function ArtwalkContainer({ artwalk }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const locationsArray = Object.values(artwalk.locations);
   // const coordinatesObj = locationsArray.map(location => {
   //   return {lat: location.lat, lng: location.long}
@@ -28,6 +29,7 @@ export default function ArtwalkContainer({ artwalk }) {
 
   const handleDelete = id => {
     dispatch(deleteOneArtwalk(id));
+    history.push("/dashboard");
   };
 
   if (locationsArray.length) {

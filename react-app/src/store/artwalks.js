@@ -67,7 +67,9 @@ export default function artwalksReducer(state = initialState, action) {
       return updateState;
     /* falls through */
     case DELETE_ARTWALK:
-      updateState.userArtwalks = {};
+      action.artwalks.forEach(artwalk => {
+        updateState.userArtwalks[artwalk.id] = artwalk;
+      });
       return updateState;
     /* falls through */
     default:
