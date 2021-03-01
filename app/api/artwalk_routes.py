@@ -5,6 +5,7 @@ import json
 
 artwalk_routes = Blueprint('artwalks', __name__)
 
+
 @artwalk_routes.route('/<int:id>')
 @login_required
 def artwalk(id):
@@ -12,3 +13,11 @@ def artwalk(id):
     data = artwalk.to_dict()
     res = json.dumps(data)
     return res
+
+
+@artwalk_routes.route("/delete/<int:id>", methods=["DELETE"])
+@login_required
+def delete_artwalk(id):
+    artwalk = ArtWalk.query.get(id)
+
+    print(artwalk)
